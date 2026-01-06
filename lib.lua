@@ -1132,66 +1132,6 @@ local ModalElement = New("TextButton", {
 })
 
 --// Cursor
-local Cursor
-do
-    Cursor = New("Frame", {
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundColor3 = "WhiteColor",
-        Size = UDim2.fromOffset(9, 1),
-        Visible = false,
-        ZIndex = 999,
-        Parent = ScreenGui,
-    })
-    New("Frame", {
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundColor3 = "DarkColor",
-        Position = UDim2.fromScale(0.5, 0.5),
-        Size = UDim2.new(1, 2, 1, 2),
-        ZIndex = 998,
-        Parent = Cursor,
-    })
-
-    local CursorV = New("Frame", {
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundColor3 = "WhiteColor",
-        Position = UDim2.fromScale(0.5, 0.5),
-        Size = UDim2.fromOffset(1, 9),
-        Parent = Cursor,
-    })
-    New("Frame", {
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundColor3 = "DarkColor",
-        Position = UDim2.fromScale(0.5, 0.5),
-        Size = UDim2.new(1, 2, 1, 2),
-        ZIndex = 998,
-        Parent = CursorV,
-    })
-end
-
---// Notification
-local NotificationArea
-local NotificationList
-do
-    NotificationArea = New("Frame", {
-        AnchorPoint = Vector2.new(1, 0),
-        BackgroundTransparency = 1,
-        Position = UDim2.new(1, -6, 0, 6),
-        Size = UDim2.new(0, 300, 1, -6),
-        Parent = ScreenGui,
-    })
-    table.insert(
-        Library.Scales,
-        New("UIScale", {
-            Parent = NotificationArea,
-        })
-    )
-
-    NotificationList = New("UIListLayout", {
-        HorizontalAlignment = Enum.HorizontalAlignment.Right,
-        Padding = UDim.new(0, 8),
-        Parent = NotificationArea,
-    })
-end
 
 --// Lib Functions \\--
 function Library:GetBetterColor(Color: Color3, Add: number): Color3
@@ -1842,8 +1782,8 @@ function Library:AddTooltip(InfoStr: string, DisabledInfoStr: string, HoverInsta
             and not (CurrentMenu and Library:MouseIsOverFrame(CurrentMenu.Menu, Mouse))
         do
             TooltipLabel.Position = UDim2.fromOffset(
-                Mouse.X + (Library.ShowCustomCursor and 8 or 14),
-                Mouse.Y + (Library.ShowCustomCursor and 8 or 12)
+                Mouse.X + (14),
+                Mouse.Y + (12)
             )
 
             RunService.RenderStepped:Wait()
